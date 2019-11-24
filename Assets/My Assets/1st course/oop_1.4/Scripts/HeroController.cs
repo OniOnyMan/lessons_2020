@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class HeroController : MonoBehaviour
 {
-    public int Speed = 10;
+    public float Speed = 10;
 
 	void Start ()
     {

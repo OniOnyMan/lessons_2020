@@ -25,6 +25,6 @@ public class PlayerTransformController : HeroController
             direction += new Vector2(-1, 0);
         }
 
-        transform.Translate(direction);
+        transform.Translate(direction * Speed);
     }
 }
