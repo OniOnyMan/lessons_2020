@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerRigidbodyPhisicController : HeroController
 {
     public float JumpForce = 5;
@@ -37,7 +38,7 @@ public class PlayerRigidbodyPhisicController : HeroController
     {
         var bounds = _renderer.bounds;
         var footPoint = new Vector2(bounds.center.x, bounds.min.y);
-        Debug.Log("Foot point " + footPoint);
+        //Debug.Log("Foot point " + footPoint);
 
         var grounded = Physics2D.OverlapCircle(footPoint, OverlapRadius, WhatIsGround);
 
