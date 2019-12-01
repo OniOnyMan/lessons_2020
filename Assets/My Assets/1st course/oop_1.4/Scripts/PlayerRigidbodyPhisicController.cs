@@ -4,13 +4,16 @@ using System.Collections;
 public class PlayerRigidbodyPhisicController : HeroController
 {
     public float JumpForce = 5;
-    public LayerMask whatIsGround;
+    public float OverlapRadius = 0.3f;
+    public LayerMask WhatIsGround;
 
     private Rigidbody2D _rigidbody2D;
+    private Renderer _renderer;
 
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<Renderer>();
     }
 
     private void Update()
@@ -32,8 +35,12 @@ public class PlayerRigidbodyPhisicController : HeroController
 
     public void Jump()
     {
-        var footPoint = new Vector2(transform.position.x, transform.position.y);
-        var grounded = Physics2D.OverlapCircle(footPoint, 1, whatIsGround);
+        var bounds = _renderer.bounds;
+        var footPoint = new Vector2(bounds.center.x, bounds.min.y);
+        Debug.Log("Foot point " + footPoint);
+
+        var grounded = Physics2D.OverlapCircle(footPoint, OverlapRadius, WhatIsGround);
+
         if (!(grounded == null))
             _rigidbody2D.AddForce(Vector2.up * JumpForce, ForceMode2D.Force);
     }

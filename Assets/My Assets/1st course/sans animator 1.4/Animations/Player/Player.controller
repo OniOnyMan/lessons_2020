@@ -8,14 +8,20 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
+  - m_Name: IdleType
+    m_Type: 3
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   - m_Name: AfkTime
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: IdleType
-    m_Type: 3
+  - m_Name: IsAfk
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -67,6 +73,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: IdleType
     m_EventTreshold: 1
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsAfk
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102596926287447556}
   m_Solo: 0
@@ -112,8 +121,8 @@ AnimatorStateTransition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 6
-    m_ConditionEvent: IdleType
+  - m_ConditionMode: 1
+    m_ConditionEvent: IsAfk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102202067809423926}
@@ -259,7 +268,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 48, y: 36, z: 0}
-  m_EntryPosition: {x: 48, y: 132, z: 0}
+  m_EntryPosition: {x: 0, y: 132, z: 0}
   m_ExitPosition: {x: 12, y: 84, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102202067809423926}

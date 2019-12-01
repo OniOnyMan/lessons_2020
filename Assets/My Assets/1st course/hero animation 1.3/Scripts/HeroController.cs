@@ -5,8 +5,15 @@ using UnityEngine;
 
 namespace My_Animator
 {
+    public enum Direction
+    {
+        Left, Right
+    }
+
     public class HeroController : MonoBehaviour
     {
+        public bool RotateBySpriteRender = false;
+
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
 
@@ -19,19 +26,16 @@ namespace My_Animator
         void Update()
         {
             float direction = Input.GetAxis("Horizontal");
-            var rotation = transform.rotation;
 
             if (direction != 0)
             {
                 if (direction < 0)
                 {
-                    //_spriteRenderer.flipX = true;
-                    transform.rotation = Quaternion.Euler(rotation.x, 180, rotation.z);
+                    SetDirection(Direction.Left);
                 }
                 else if (direction > 0)
                 {
-                    //_spriteRenderer.flipX = false;
-                    transform.rotation = Quaternion.Euler(rotation.x, 0, rotation.z);
+                    SetDirection(Direction.Right);
                 }
 
                 _animator.SetBool("Run", true);
@@ -39,6 +43,20 @@ namespace My_Animator
             else
             {
                 _animator.SetBool("Run", false);
+            }
+        }
+
+        private void SetDirection(Direction type)
+        {
+            var isLeft = type == Direction.Left;
+
+            if (RotateBySpriteRender)
+                _spriteRenderer.flipX = isLeft;
+            else
+            {
+                var rotation = transform.rotation;
+                var angle = isLeft ? 180 : 0;
+                transform.rotation = Quaternion.Euler(rotation.x, angle, rotation.z);
             }
         }
     }

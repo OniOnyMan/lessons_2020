@@ -12,8 +12,8 @@ public class PlayerRigidbodyController : HeroController
 
     public override void Move()
     {
-        var direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * Speed * Time.deltaTime;
+        var direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        _rigidbody2D.velocity = direction;
+        _rigidbody2D.velocity = direction * Speed * Time.deltaTime;
     }
 }
