@@ -4,6 +4,8 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerRigidbodyPhisicController : HeroController
 {
+    public float MaxSpeed = 40;
+
     public float JumpForce = 5;
     public float OverlapRadius = 0.3f;
     public LayerMask WhatIsGround;
@@ -28,10 +30,20 @@ public class PlayerRigidbodyPhisicController : HeroController
 
     public override void Move()
     {
-        var directionX = Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
-        var direction = new Vector2(_rigidbody2D.velocity.x + directionX, _rigidbody2D.velocity.y);
+        var directionX = _rigidbody2D.velocity.x + Input.GetAxis("Horizontal") * Speed * Time.deltaTime;
 
-        _rigidbody2D.velocity = direction;
+        if (Mathf.Pow(directionX, 2) > Mathf.Pow(MaxSpeed, 2))
+        {
+            directionX = directionX > 0 ? MaxSpeed : -MaxSpeed;
+        }
+
+        //PlayerPrefs.SetInt("Nameing_HideUI", (int)KeyCode.U);
+
+        //Input.GetKey((KeyCode)PlayerPrefs.GetInt("Nameing_HideUI"));
+
+        var velocity = new Vector2(directionX, _rigidbody2D.velocity.y);
+        Debug.Log(velocity);
+        _rigidbody2D.velocity = velocity;
     }
 
     public void Jump()
