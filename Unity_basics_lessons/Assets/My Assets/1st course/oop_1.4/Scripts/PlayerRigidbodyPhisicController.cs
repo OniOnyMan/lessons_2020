@@ -37,12 +37,14 @@ public class PlayerRigidbodyPhisicController : HeroController
             directionX = directionX > 0 ? MaxSpeed : -MaxSpeed;
         }
 
+        Debug.Log(directionX);
+
         //PlayerPrefs.SetInt("Nameing_HideUI", (int)KeyCode.U);
 
         //Input.GetKey((KeyCode)PlayerPrefs.GetInt("Nameing_HideUI"));
 
         var velocity = new Vector2(directionX, _rigidbody2D.velocity.y);
-        Debug.Log(velocity);
+        //Debug.Log(velocity);
         _rigidbody2D.velocity = velocity;
     }
 
