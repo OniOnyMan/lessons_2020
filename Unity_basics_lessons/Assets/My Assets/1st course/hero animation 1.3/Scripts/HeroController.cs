@@ -64,17 +64,22 @@ namespace My_Animator
         {
             if (condition)
             {
-                _animator.SetTrigger("Landing");
+                _animator.SetTrigger("Falling");
             }
             else
             {
-                _animator.SetTrigger("Falling");
+                _animator.SetTrigger("Landing");
+                _animator.SetBool("IsJumped", false);
             }
         }
 
         public void Jump()
         {
-            _animator.SetTrigger("Jump");
+            if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
+            {
+                _animator.SetTrigger("Jump");
+                _animator.SetBool("IsJumped", true);
+            }
         }
     }
 }

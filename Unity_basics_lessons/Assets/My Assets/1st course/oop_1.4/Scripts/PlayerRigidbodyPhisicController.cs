@@ -15,7 +15,6 @@ public class PlayerRigidbodyPhisicController : HeroController
     private Rigidbody2D _rigidbody2D;
     private Renderer _renderer;
     private bool _grounded = false;
-    private bool _prevGrounded = true;
     private My_Animator.HeroController _animator;
     private Vector3 _startPos;
 
@@ -25,15 +24,17 @@ public class PlayerRigidbodyPhisicController : HeroController
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _renderer = GetComponent<Renderer>();
         _startPos = transform.position;
+        if (!_grounded)
+            _animator.IsFalling(!_grounded);
     }
 
     private void FixedUpdate()
     {
+        var prevGrounded = _grounded;
         _grounded = IsGrounded();
-        if (_prevGrounded != _grounded)
+        if (prevGrounded != _grounded)
         {
-            _animator.IsFalling(_grounded);
-            _prevGrounded = _grounded;
+            _animator.IsFalling(!_grounded);
         }
         
         Move();
