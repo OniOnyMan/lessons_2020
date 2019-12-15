@@ -188,7 +188,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 44173086}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818196459}
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &44173086
@@ -640,8 +651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1076.8876, y: -50}
-  m_SizeDelta: {x: 294.825, y: 100}
+  m_AnchoredPosition: {x: 1082.2251, y: -50}
+  m_SizeDelta: {x: 296.35, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574884046
 MonoBehaviour:
@@ -700,7 +711,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 574884048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818196459}
+        m_MethodName: TryLuck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &574884048
@@ -937,7 +959,14 @@ MonoBehaviour:
   Money: 10
   Armor: 5
   Xp: 0
-  Console: {fileID: 0}
+  Console: {fileID: 355003803}
+  IsNewGame: 0
+  IsXpIncrease: 1
+  MaxXpIncrease: 100
+  MoneyChanseIncrease: 32.5
+  MoneyMaxIncrease: 100
+  GetDamageChanse: 45.9
+  ArmorResistance: 23
 --- !u!1 &989196512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,8 +1076,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 147.4125, y: -50}
-  m_SizeDelta: {x: 294.825, y: 100}
+  m_AnchoredPosition: {x: 148.175, y: -50}
+  m_SizeDelta: {x: 296.35, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022593440
 MonoBehaviour:
@@ -1107,7 +1136,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1022593442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818196459}
+        m_MethodName: HealUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1022593442
@@ -1179,8 +1219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.2, y: -295}
-  m_SizeDelta: {x: 1224.3, y: 100}
+  m_AnchoredPosition: {x: 4.275, y: -295}
+  m_SizeDelta: {x: 1230.4, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108501578
 MonoBehaviour:
@@ -1915,8 +1955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 767.0625, y: -50}
-  m_SizeDelta: {x: 294.825, y: 100}
+  m_AnchoredPosition: {x: 770.875, y: -50}
+  m_SizeDelta: {x: 296.35, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1708618758
 MonoBehaviour:
@@ -1975,7 +2015,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1708618760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818196459}
+        m_MethodName: Teleport
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1708618760
@@ -2282,7 +2333,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 1457112487}
   m_HorizontalScrollbar: {fileID: 1715148797}
   m_VerticalScrollbar: {fileID: 2068907572}
@@ -2330,8 +2381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 457.23752, y: -50}
-  m_SizeDelta: {x: 294.825, y: 100}
+  m_AnchoredPosition: {x: 459.52502, y: -50}
+  m_SizeDelta: {x: 296.35, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819441865
 MonoBehaviour:
@@ -2390,7 +2441,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1819441867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 818196459}
+        m_MethodName: GetDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1819441867
