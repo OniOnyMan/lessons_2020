@@ -59,6 +59,23 @@ namespace My_Animator
                 transform.rotation = Quaternion.Euler(rotation.x, angle, rotation.z);
             }
         }
+
+        public void IsFalling(bool condition)
+        {
+            if (condition)
+            {
+                _animator.SetTrigger("Falling");
+            }
+            else
+            {
+                _animator.SetTrigger("Landing");
+            }
+        }
+
+        public void Jump()
+        {
+            _animator.SetTrigger("Jump");
+        }
     }
 }
 
