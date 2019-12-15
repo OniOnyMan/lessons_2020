@@ -30,7 +30,6 @@ public class PlayerRigidbodyPhisicController : HeroController
     private void FixedUpdate()
     {
         _grounded = IsGrounded();
-        Debug.Log(_grounded);
         if (_prevGrounded != _grounded)
         {
             _animator.IsFalling(_grounded);

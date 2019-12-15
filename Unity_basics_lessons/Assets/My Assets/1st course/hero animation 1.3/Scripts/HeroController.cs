@@ -64,11 +64,11 @@ namespace My_Animator
         {
             if (condition)
             {
-                _animator.SetTrigger("Falling");
+                _animator.SetTrigger("Landing");
             }
             else
             {
-                _animator.SetTrigger("Landing");
+                _animator.SetTrigger("Falling");
             }
         }
 

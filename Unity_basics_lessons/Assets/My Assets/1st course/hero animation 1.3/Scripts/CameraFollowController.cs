@@ -15,7 +15,6 @@ public class CameraFollowController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(Input.mousePosition);
         gameObject.transform.position = new Vector3(_player.position.x, _player.position.y, ZLayerOrder);
     }
 }
