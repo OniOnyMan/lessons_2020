@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour
 
     public void HealUp()
     {
-        var count = Random.Range(1, 10);
+        //var count = Random.Range(1, 10);
         Health += count;
         Console.text += string.Format("Уух, спасибо! Health увеличено на {0}\n", count);
         ShowStats();
