@@ -16,7 +16,7 @@ public class GoldCollisionController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject);
+        //Debug.Log(collision.gameObject);
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
