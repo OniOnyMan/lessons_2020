@@ -27,9 +27,9 @@ public class PlayerInventory : MonoBehaviour
             if (Physics.Raycast(ray, out hit, RayDistance, layerMask)) 
             {
                 Debug.Log(hit.transform.name);
-                if (hit.transform.gameObject.CompareTag("Gold"))
+                if (hit.transform.gameObject.CompareTag("PickedUp"))
                 {
-                    _inventory.Add(hit.transform.gameObject);
+                    _inventory.Add(hit.transform.GetComponent<ItemCollisionController>().ItemPrefab);
                     Inventory = _inventory.ToArray();
                     Destroy(hit.transform.gameObject);
                 }

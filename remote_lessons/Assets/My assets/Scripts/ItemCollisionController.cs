@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoldCollisionController : MonoBehaviour
+public class ItemCollisionController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _itemPrefab;
+
+    public GameObject ItemPrefab { get { return _itemPrefab; } }
+
     void Start()
     {
         

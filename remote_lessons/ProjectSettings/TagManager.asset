@@ -5,7 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
-  - Gold
+  - PickedUp
   layers:
   - Default
   - TransparentFX
