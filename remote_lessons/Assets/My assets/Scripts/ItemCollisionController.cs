@@ -22,9 +22,14 @@ public class ItemCollisionController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject);
-        if (collision.gameObject.CompareTag("Player"))
+        var other = collision.gameObject;
+        if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            if (other.GetComponent<PlayerInventory>()
+                     .CollectItem(_itemPrefab.GetComponent<ItemContainer>()) >= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
