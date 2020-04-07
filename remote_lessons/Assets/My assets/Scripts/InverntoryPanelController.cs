@@ -31,7 +31,7 @@ public class InverntoryPanelController : MonoBehaviour
 
     void Start()
     {
-        SelectContainer(_selectedItem);
+        SelectContainer(0);
     }
 
     void Update()
@@ -43,9 +43,12 @@ public class InverntoryPanelController : MonoBehaviour
     {
         var current = Instance.transform.GetChild(index).GetComponent<Image>();
         current.color = Instance.SelectedColor;
-        var previous = Instance.transform.GetChild(_selectedItem).GetComponent<Image>();
-        previous.color = Instance.MainColor;
-        _selectedItem = index;
+        if (index != _selectedItem)
+        {
+            var previous = Instance.transform.GetChild(_selectedItem).GetComponent<Image>();
+            previous.color = Instance.MainColor;
+            _selectedItem = index;
+        }
     }
 
     public static void ShowItem(int index, ItemContainer item) 

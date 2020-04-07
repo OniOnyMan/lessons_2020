@@ -10,68 +10,83 @@ public class PlayerInventory : MonoBehaviour
 
     private ItemContainer[] _inventory = new ItemContainer[9];
     private int _selectedItem = 0;
+
     void Start()
     {
-        
+
     }
 
     void Update()
     {
         Debug.DrawRay(HeadCamera.position, HeadCamera.forward * RayDistance, Color.yellow);
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            RaycastHit hit;
-            Ray ray = HeadCamera.GetComponent<Camera>()
-                                .ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
-
-            if (Physics.Raycast(ray, out hit, RayDistance, layerMask)) 
-            {
-                Debug.Log(hit.transform.name);
-                if (hit.transform.gameObject.CompareTag("PickedUp"))
-                {
-                    if (CollectItem(hit.transform.GetComponent<ItemCollisionController>()
-                                       .ItemPrefab.GetComponent<ItemContainer>()) >= 0)
-                    {
-                        Destroy(hit.transform.gameObject);
-                    }
-                }
-            }
+            TryPickUpItem();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)) 
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (_inventory[_selectedItem])
-            {
-                InverntoryPanelController.DropItem(_selectedItem);
-                var dropPos = transform.Find("DropPoint").position;
-                var prefab = _inventory[_selectedItem].ScenePrefab;
-                Instantiate(prefab, dropPos, Quaternion.identity);
-                Debug.Log(_inventory[_selectedItem].GetComponent<Collider>());
+            DropSelectedItem();
+        }
 
-                _inventory[_selectedItem] = null;
+        var scrollY = Input.mouseScrollDelta.y;
+        if (scrollY != 0)
+        {
+            CheckScroll(scrollY);
+        }
+    }
+
+    private void DropSelectedItem()
+    {
+        if (_inventory[_selectedItem])
+        {
+            InverntoryPanelController.DropItem(_selectedItem);
+            var dropPos = transform.Find("DropPoint").position;
+            var prefab = _inventory[_selectedItem].ScenePrefab;
+            Instantiate(prefab, dropPos, Quaternion.identity);
+            Debug.Log(_inventory[_selectedItem].GetComponent<Collider>());
+
+            _inventory[_selectedItem] = null;
+        }
+    }
+
+    private void TryPickUpItem()
+    {
+        RaycastHit hit;
+        Ray ray = HeadCamera.GetComponent<Camera>()
+                            .ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+
+        if (Physics.Raycast(ray, out hit, RayDistance, layerMask))
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.transform.gameObject.CompareTag("PickedUp"))
+            {
+                if (CollectItem(hit.transform.GetComponent<ItemCollisionController>()
+                                   .ItemPrefab.GetComponent<ItemContainer>()) >= 0)
+                {
+                    Destroy(hit.transform.gameObject);
+                }
             }
         }
     }
 
     private void FixedUpdate()
     {
-        var currentSelectedItem = _selectedItem;
+        
+    }
 
-        var scrollY = Input.mouseScrollDelta.y;
-        if (scrollY != 0)
-        {
-            _selectedItem -= (int)scrollY;
+    private void CheckScroll(float scrollY)
+    {
+        var newSelectedItem = _selectedItem + (scrollY < 0 ? 1 : -1);
 
-            //Debug.Log("До математики " + _selectedItem);
-            //TO DO: количество строк из среды
-            _selectedItem = Mathf.Abs(_selectedItem) % _inventory.Length;
-           // Debug.Log("После математики " + _selectedItem);
+        if (newSelectedItem < 0)
+            _selectedItem = _inventory.Length - 1;
+        else if (newSelectedItem >= _inventory.Length)
+            _selectedItem = 0;
+        else
+            _selectedItem = newSelectedItem;
 
-            if (currentSelectedItem != _selectedItem)
-            {
-                InverntoryPanelController.SelectContainer(_selectedItem);
-            }
-        }
+        InverntoryPanelController.SelectContainer(_selectedItem);
     }
 
     public int CollectItem(ItemContainer item) 
