@@ -44,7 +44,7 @@ public class PlayerInventory : MonoBehaviour
             var dropPos = transform.Find("DropPoint").position;
             var prefab = _inventory[_selectedItem].ScenePrefab;
             Instantiate(prefab, dropPos, Quaternion.identity);
-            Debug.Log(_inventory[_selectedItem].GetComponent<Collider>());
+            //Debug.Log(_inventory[_selectedItem].GetComponent<Collider>());
 
             _inventory[_selectedItem] = null;
         }
@@ -58,7 +58,7 @@ public class PlayerInventory : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, RayDistance, layerMask))
         {
-            Debug.Log(hit.transform.name);
+            //Debug.Log(hit.transform.name);
             if (hit.transform.gameObject.CompareTag("PickedUp"))
             {
                 if (CollectItem(hit.transform.GetComponent<ItemCollisionController>()
