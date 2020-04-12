@@ -8,6 +8,7 @@ TagManager:
   - PickedUp
   - Gold
   - InventoryPanel
+  - Bullet
   layers:
   - Default
   - TransparentFX
